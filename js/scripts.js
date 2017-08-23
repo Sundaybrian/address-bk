@@ -20,6 +20,47 @@ Contact.prototype.fullName= function () {
 
   //user interface
   $(document).ready(function(){
+    $("#add-address").click(function() {
+      $("#new-addresses").append('<div class="new-address">'+
+        '<div class="form-group">'+
+          '<label for="new-street">Enter Street </label>'+
+          '<input type="text" class="form-control" id="new-street">'+
+
+        '</div>'+
+        '<div class="form-group">'+
+          '<label for="new-city">Enter City </label>'+
+          '<input type="text" class="form-control" id="new-city">'+
+
+        '</div>'+
+        '<div class="form-group">'+
+          '<label for="new-country">Enter Country </label>'+
+          '<input type="text" class="form-control" id="new-country">'+
+
+        '</div>'+
+
+      '</div>');
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $("form#new-contact").submit(function(event){
       event.preventDefault();
 
