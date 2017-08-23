@@ -4,6 +4,15 @@ function Contact(first, last) {
     this.addresses=[];
   }
 
+function Address(street,city,country){
+this.street=street;
+this.city=city;
+this.country=country;  
+}
+
+
+
+
 Contact.prototype.fullName= function () {
   return this.firstName +""+this.lastName;
 
