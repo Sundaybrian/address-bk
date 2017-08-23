@@ -54,9 +54,9 @@ Contact.prototype.fullName= function () {
        var newContact = new Contact(inputtedFirstName, inputtedLastName);
 
       $(".new-address").each(function() {
-        var inputtedStreet=$(this).find("input#new-street").val();
-        var inputtedCity=$(this).find("input#new-city").val();
-        var inputtedCountry=$(this).("input#new-country").val();
+        var inputtedStreet=$(this).find("input.new-street").val();
+        var inputtedCity=$(this).find("input.new-city").val();
+        var inputtedCountry=$(this).find("input.new-country").val();
         var newAddress=new Address(inputtedStreet,inputtedCity,inputtedCountry);
         newContact.addresses.push(newAddress);
 
@@ -69,6 +69,10 @@ Contact.prototype.fullName= function () {
            $("#show-contact h2").text(newContact.firstName);
            $(".first-name").text(newContact.firstName);
            $(".last-name").text(newContact.lastName);
+           $("ul#addresses").text("");
+           newContact.addresses.forEach(function(address){
+             $("ul#addresses").append("<li>" +address.street + "," +address.city +"" + address.country + "</li>");
+           });
          });
          $("input#new-first-name").val("");
          $("input#new-last-name").val("");
