@@ -44,35 +44,24 @@ Contact.prototype.fullName= function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     $("form#new-contact").submit(function(event){
       event.preventDefault();
 
        var inputtedFirstName = $("input#new-first-name").val();
        var inputtedLastName = $("input#new-last-name").val();
-       var inputtedStreet=$("input#new-street").val();
-       var inputtedCity=$("input#new-city").val();
-       var inputtedCountry=$("input#new-country").val();
 
 
        var newContact = new Contact(inputtedFirstName, inputtedLastName);
-       var home=new Address(inputtedStreet,inputtedCity,inputtedCountry);
+
+      $(".new-address").each(function() {
+        var inputtedStreet=$(this).find("input#new-street").val();
+        var inputtedCity=$(this).find("input#new-city").val();
+        var inputtedCountry=$(this).("input#new-country").val();
+        var newAddress=new Address(inputtedStreet,inputtedCity,inputtedCountry);
+        newContact.addresses.push(newAddress);
+
+      });
+
 
        $("ul#contacts").append("<li><span class='contact'>"+ newContact.fullName() + "</span></li>");
        $(".contact").last().click(function() {
