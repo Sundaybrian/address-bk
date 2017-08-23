@@ -10,15 +10,16 @@ this.city=city;
 this.country=country;
 }
 
+Contact.prototype.fullName= function () {
+  return this.firstName +""+this.lastName;
+
+};
+
 Address.prototype.fullAddress =function(){
   return this.street +", " +this.city + ", " + this.country;
 }
 
 
-Contact.prototype.fullName= function () {
-  return this.firstName +""+this.lastName;
-
-};
 
   //user interface
   $(document).ready(function(){
@@ -26,17 +27,17 @@ Contact.prototype.fullName= function () {
       $("#new-addresses").append('<div class="new-address">'+
         '<div class="form-group">'+
           '<label for="new-street">Enter Street </label>'+
-          '<input type="text" class="form-control" id="new-street">'+
+          '<input type="text" class="form-control new-street">'+
 
         '</div>'+
         '<div class="form-group">'+
           '<label for="new-city">Enter City </label>'+
-          '<input type="text" class="form-control" id="new-city">'+
+          '<input type="text" class="form-control new-city">'+
 
         '</div>'+
         '<div class="form-group">'+
           '<label for="new-country">Enter Country </label>'+
-          '<input type="text" class="form-control" id="new-country">'+
+          '<input type="text" class="form-control new-country">'+
 
         '</div>'+
 
@@ -66,6 +67,8 @@ Contact.prototype.fullName= function () {
 
 
        $("ul#contacts").append("<li><span class='contact'>"+ newContact.fullName() + "</span></li>");
+
+
        $(".contact").last().click(function() {
            $("#show-contact").show();
            $("#show-contact h2").text(newContact.firstName);
@@ -73,13 +76,11 @@ Contact.prototype.fullName= function () {
            $(".last-name").text(newContact.lastName);
            $("ul#addresses").text("");
            newContact.addresses.forEach(function(address){
-             $("ul#addresses").append("<li>" +address.street + "," +address.city +"" + address.country + "</li>");
+             $("ul#addresses").append("<li>" + address.fullAddress() +"</li>");
            });
          });
          $("input#new-first-name").val("");
          $("input#new-last-name").val("");
-         $("input.new-street").val("");
-         $("input.new-city").val("");
-         $("input.new-country").val("");
+
     });
   });
