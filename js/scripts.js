@@ -10,7 +10,9 @@ this.city=city;
 this.country=country;
 }
 
-
+Address.prototype.fullAddress =function(){
+  return this.street +", " +this.city + ", " + this.country;
+}
 
 
 Contact.prototype.fullName= function () {
