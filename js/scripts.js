@@ -25,6 +25,9 @@ Contact.prototype.fullName= function () {
 
        var inputtedFirstName = $("input#new-first-name").val();
        var inputtedLastName = $("input#new-last-name").val();
+       var inputtedStreet=$("input#new-street").val();
+       var inputtedCity=$("input#new-city").val();
+       var inputtedCountry=$("input#new-country").val();
 
 
        var newContact = new Contact(inputtedFirstName, inputtedLastName);
